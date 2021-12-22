@@ -1,0 +1,27 @@
+.b{
+  margin-left:5%;
+}
+.auth-card{
+  padding :20px;
+  text-align: center;
+  max-width: 600px;
+  margin: 10px auto;
+}
+
+.mycard{
+  margin-top: 30px;
+}
+.gallery{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.item{
+  width: 30%;
+}
+
+.home-card{
+ max-width: 540px;
+ height: max-content;
+ margin: 25px auto;
+}

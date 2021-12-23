@@ -19,6 +19,8 @@ require("./models/post");
 app.use(express.json())
 app.use(require("./routes/authen.js"));
 app.use(require("./routes/post.js"));
+app.use(require("./routes/user.js"));
+
 app.listen(PORT,()=>{
     console.log(PORT);
 });

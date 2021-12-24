@@ -11,6 +11,7 @@ export const Profile = () => {
            }
        }).then(res=>
         res.json()).then(result=>{
+            console.log(result)
             setPics(result.mypost)
        }).catch(error=>{
            console.log(error);
@@ -20,14 +21,15 @@ export const Profile = () => {
         <div style={{maxWidth:"750px", margin:"0px auto"}}>
            <div style={{display:'flex',justifyContent:"space-around", margin:"18px 0px",borderBottom:"1px solid gray"}}>
                <div>
-                   <img style={{width:"160px", height:"160px", borderRadius:"80px" }} src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"/>
+                   <img style={{width:"160px", height:"160px", borderRadius:"80px" }} 
+                   src={state?state.pic:"loadding"}/>
                </div>
                <div>
                    <h4>{state?state.name:"Loadding"}</h4>
                    <div style={{display:'flex',justifyContent:'space-around',width:'108%'}}>
-                   <h6>35 posts</h6>
-                   <h6>35 followers</h6>
-                   <h6>35 following</h6>
+                   <h6>{mypics.length} posts</h6>
+                   <h6>{state?state.followers.length:"0"} followers</h6>
+                   <h6>{state?state.following.length:"0"}  following</h6>
                    </div>
                </div>
            </div>

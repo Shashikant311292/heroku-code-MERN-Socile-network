@@ -22,7 +22,6 @@ router.post("/createpost",requireLogin,(req,res)=>{
       console.log(error);
     })
 })
-
 router.get("/allpost",requireLogin,(req,res)=>{
     Post.find().populate("postedby","_id name").populate("comments.postedBy","_id name").then(posts=>{
         res.json({posts})
@@ -30,7 +29,13 @@ router.get("/allpost",requireLogin,(req,res)=>{
         console.log(error);
     })
 })
-
+router.get("/getsubpost",requireLogin,(req,res)=>{
+    Post.find({postedby:{$in:req.user.following}}).populate("postedby","_id name").populate("comments.postedBy","_id name").then(posts=>{
+        res.json({posts})
+    }).catch(error=>{
+        console.log(error);
+    })
+})
 router.get("/mypost",requireLogin, (req,res)=>{
  Post.find({postedby:req.user._id}).populate("postedby","_id name").then(mypost=>{
      res.json({mypost});

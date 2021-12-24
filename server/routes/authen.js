@@ -11,7 +11,7 @@ router.get("/",(req,res)=>{
 });
 
 router.post("/signup",(req,res)=>{
-    const {name, email, password} = req.body
+    const {name, email, password, pic} = req.body
     if(!name || !email || !password)
     {
         res.status(422).json({error:"please enter value"})
@@ -24,7 +24,8 @@ router.post("/signup",(req,res)=>{
             const user = new User({
                 email,
                 password:hashedpassword,
-                name
+                name,
+                pic
               })
               user.save().then(user=>{
                   res.json({message: "Your data send succesfully"});
@@ -60,8 +61,8 @@ router.post("/signin",(req,res)=>{
            {
                //res.json({message:"successfully singin"});
                const token = jwt.sign({_id:savedUser._id}, JWT_SECRET);
-               const {_id, name, email} = savedUser
-               res.json({token,user:{_id, name, email}})
+               const {_id, name, email,followers,following,pic} = savedUser
+               res.json({token,user:{_id, name, email, followers, following, pic}})
            }
            else
            {

@@ -9,7 +9,7 @@ import Createpost from './components/screens/Createpost';
 import { createContext, useContext, useEffect, useReducer } from 'react';
 import { initialState, reducer } from './reducers/userReducer';
 import { UserProfile } from './components/screens/UserProfile';
-
+import {SubscribedUserPost} from './components/screens/SubscribedUseePost';
 export const userContext = createContext()
 const Routing = ()=>{
   const navigator = useNavigate();
@@ -32,6 +32,7 @@ const Routing = ()=>{
     <Route exact path="profile" element={<Profile/>} />
     <Route path="createpost" element={<Createpost/>} />
     <Route path="profile/:userid" element={<UserProfile/>} />
+    <Route path="myfollowerspost" element={<SubscribedUserPost/>} />
     </Routes>
  )
 }
